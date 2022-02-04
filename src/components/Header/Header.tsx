@@ -2,15 +2,22 @@ import {
     Container,
     Title,
     IconContainer,
-    Icon,
+    MenuIcon,
+    CloseIcon,
 } from './styles';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { toggleNav } from '../../store/slices/nav';
 
 const Header = () => {
+
+    const { isNavVisible } = useAppSelector(state => state.nav);
+    const dispatch = useAppDispatch();
+
     return(
         <Container>
             <Title>Restaurants<span>.</span></Title>
-            <IconContainer>
-                <Icon />
+            <IconContainer onClick={() => dispatch(toggleNav())}>
+                {isNavVisible ? <CloseIcon /> : <MenuIcon />}
             </IconContainer>
         </Container>
     )

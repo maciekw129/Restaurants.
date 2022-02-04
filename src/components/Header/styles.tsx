@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { Menu } from '@styled-icons/evaicons-solid/Menu';
+import { Close } from '@styled-icons/evaicons-solid/Close';
 
 export const Container = styled.header`
     width: 100%;
@@ -27,7 +28,11 @@ export const IconContainer = styled.div`
     }
 `;
 
-export const Icon = styled(Menu)`
+export const MenuIcon = styled(Menu)`
     height: 2.5rem;
 `;
+
+export const CloseIcon = styled(Close)`
+    height: 2.5rem;
+`
 
