@@ -5,6 +5,8 @@ import { Close } from '@styled-icons/evaicons-solid/Close';
 export const Container = styled.header`
     width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
