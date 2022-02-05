@@ -15,7 +15,7 @@ const Header = () => {
 
     return(
         <Container>
-            <Title>Restaurants<span>.</span></Title>
+            <Title><span>R</span>estaurants<span>.</span></Title>
             <IconContainer onClick={() => dispatch(toggleNav())}>
                 {isNavVisible ? <CloseIcon /> : <MenuIcon />}
             </IconContainer>

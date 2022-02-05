@@ -7,6 +7,15 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
     }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    ul, ol {
+        list-style-type: none;
+    }
 `;
 
 export default GlobalStyles;
