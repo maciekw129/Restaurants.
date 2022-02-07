@@ -6,6 +6,7 @@ import Page from '../../components/Page/';
 import  heroImageMainPage  from '../../images/heroImageMainPage.jpg';
 import TextInput from '../../components/TextInput';
 import { Search } from '@styled-icons/boxicons-regular/Search';
+import Button from '../../components/Button';
 
 const MainPage = () => {
     return(
@@ -19,6 +20,7 @@ const MainPage = () => {
                     >
                         <Search />
                     </TextInput>
+                    <Button>Search!</Button>
                 </SearchSection>
             </Container>
         </Page>
