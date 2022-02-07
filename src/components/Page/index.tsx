@@ -1,6 +1,3 @@
-import {
-    Container,
-} from './styles';
 import Hero from '../Hero';
 
 interface Props {
@@ -10,10 +7,10 @@ interface Props {
 
 const Page = ({heroImage, children}: Props) => {
     return(
-        <Container>
+        <div>
             <Hero heroImage={heroImage} />
             {children}
-        </Container>
+        </div>
     )
 };
 

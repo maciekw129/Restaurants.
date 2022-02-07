@@ -3,11 +3,12 @@ import styled from 'styled-components/macro';
 export const Container = styled.ul<{isNavVisible: boolean}>`
     position: absolute;
     top: -8.5rem;
+    left: 0;
+    z-index: 1;
     width: 100%;
     height: 13rem;
     background-color: #FDB568;
     display: flex;
-    z-index: -1;
     transform: ${({isNavVisible}) => isNavVisible ? 'translateY(13rem)' : null};
     transition: transform 0.5s ease-in-out;
     flex-direction: column;

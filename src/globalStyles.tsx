@@ -16,6 +16,12 @@ const GlobalStyles = createGlobalStyle`
     ul, ol {
         list-style-type: none;
     }
+
+    h1, h2, h3, h4, h5, h6 {
+        & span {
+            color: #FC8E1B;
+        }
+    }
 `;
 
 export default GlobalStyles;
