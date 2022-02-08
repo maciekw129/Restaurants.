@@ -1,14 +1,20 @@
 import styled from 'styled-components/macro';
+import TextInput from '../../components/TextInput';
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+   
+    width: 100%;
+    border-bottom: 1px solid hsl(0, 0%, 50%);
 `;
 
-export const SearchSection = styled.div`
-    display: flex;
-    padding: 1rem;
+export const SearchBar = styled(TextInput)`
+    width: 500px;
+
+    @media only screen and (max-width: 540px) {
+        width: 250px;
+    }
 `;

@@ -7,18 +7,22 @@ import {
 interface Props {
     children: React.ReactNode;
     placeholder: string;
-    width: string;
+    margin?: string;
+    textAlign ?: string;
+    className?: string;
+    type: string;
 }
 
-const TextInput = ({children, placeholder, width}: Props) => {
+const TextInput = ({children, className, placeholder, margin, textAlign, type}: Props) => {
     return(
-        <Container>
+        <Container margin={margin} className={className}>
             <IconWrapper>
                 {children}
             </IconWrapper>
             <StyledInput
                 placeholder={placeholder}
-                width={width}
+                textAlign={textAlign}
+                type={type}
             />
         </Container>
     )

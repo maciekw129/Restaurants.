@@ -1,10 +1,9 @@
 import {
     Container,
-    SearchSection,
+    SearchBar,
 } from './styles';
 import Page from '../../components/Page/';
 import  heroImageMainPage  from '../../images/heroImageMainPage.jpg';
-import TextInput from '../../components/TextInput';
 import { Search } from '@styled-icons/boxicons-regular/Search';
 import Button from '../../components/Button';
 
@@ -13,15 +12,15 @@ const MainPage = () => {
         <Page heroImage={heroImageMainPage}>
             <Container>
                 <h2>Search for your <span>favorite</span> restaurant!</h2>
-                <SearchSection>
-                    <TextInput 
-                        placeholder="Enter your address!"
-                        width="20rem"
-                    >
-                        <Search />
-                    </TextInput>
-                    <Button>Search!</Button>
-                </SearchSection>
+                <SearchBar 
+                    placeholder="Enter your address!"
+                    textAlign='center'
+                    margin='0rem'
+                    type="text"
+                 >
+                    <Search />
+                </SearchBar>
+                <Button>Search!</Button>
             </Container>
         </Page>
     )
