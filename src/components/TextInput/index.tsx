@@ -6,23 +6,29 @@ import {
 
 interface Props {
     children: React.ReactNode;
-    placeholder: string;
     margin?: string;
     textAlign ?: string;
     className?: string;
     type: string;
+    handleChange?: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void;
+    name: string;
 }
 
-const TextInput = ({children, className, placeholder, margin, textAlign, type}: Props) => {
+const TextInput = ({children, className, name, margin, textAlign, type, handleChange}: Props) => {
+
+    
+
     return(
         <Container margin={margin} className={className}>
             <IconWrapper>
                 {children}
             </IconWrapper>
             <StyledInput
-                placeholder={placeholder}
+                placeholder={name}
                 textAlign={textAlign}
                 type={type}
+                onChange={handleChange}
+                name={name}
             />
         </Container>
     )

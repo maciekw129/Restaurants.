@@ -13,10 +13,10 @@ const MainPage = () => {
             <Container>
                 <h2>Search for your <span>favorite</span> restaurant!</h2>
                 <SearchBar 
-                    placeholder="Enter your address!"
                     textAlign='center'
                     margin='0rem'
                     type="text"
+                    name='Enter your address!'
                  >
                     <Search />
                 </SearchBar>
