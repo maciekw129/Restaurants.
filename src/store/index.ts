@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import navReducer from './slices/nav';
+import authReducer from './slices/auth';
 
 
 const store = configureStore({
     reducer: {
         nav: navReducer,
+        auth: authReducer,
     },
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false
+    }),
 });
 
 export default store;

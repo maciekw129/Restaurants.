@@ -1,14 +1,22 @@
 import { useState } from 'react';
 
-const useForm = () => {
-    const [values, setValues] = useState({});
+interface valuesTypes {
+    [key: string]: string;
+}
+
+const useForm = (initialValues: valuesTypes) => {
+    const [values, setValues] = useState<valuesTypes>(initialValues);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
-        const {name, value} = e.target as HTMLInputElement;
+        const { name, value } = e.target as HTMLInputElement;
         setValues({ ...values, [name]:value });
-    }
+    };
+    
+    const resetValues = () => {
+        setValues(initialValues);
+    };
 
-    return {values, handleChange};
+    return { values, handleChange, resetValues };
 }
 
 export default useForm;

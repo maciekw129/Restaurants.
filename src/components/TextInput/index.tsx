@@ -7,19 +7,16 @@ import {
 interface Props {
     children: React.ReactNode;
     margin?: string;
-    textAlign ?: string;
-    className?: string;
+    textAlign?: string;
     type: string;
     handleChange?: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void;
     name: string;
+    value?: string;
 }
 
-const TextInput = ({children, className, name, margin, textAlign, type, handleChange}: Props) => {
-
-    
-
+const TextInput = ({children, name, margin, textAlign, type, handleChange, value}: Props) => {
     return(
-        <Container margin={margin} className={className}>
+        <Container margin={margin}>
             <IconWrapper>
                 {children}
             </IconWrapper>
@@ -29,6 +26,7 @@ const TextInput = ({children, className, name, margin, textAlign, type, handleCh
                 type={type}
                 onChange={handleChange}
                 name={name}
+                value={value}
             />
         </Container>
     )
