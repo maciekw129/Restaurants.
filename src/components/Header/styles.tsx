@@ -25,10 +25,10 @@ export const IconContainer = styled.div`
 `;
 
 export const MenuIcon = styled(Menu)`
-    height: 2.5rem;
+    height: 2rem;
 `;
 
 export const CloseIcon = styled(Close)`
-    height: 2.5rem;
+    height: 2rem;
 `
 
