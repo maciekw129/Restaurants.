@@ -1,22 +1,25 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import requests from '../../helpers/requests';
+import axios, { AxiosError } from 'axios';
 
-interface loginThunk {
+interface valuesTypes {
     [key: string]: string;
-};
+}
 
 const user = JSON.parse(localStorage.getItem('user') || '0');
 
 export const login = createAsyncThunk(
     "auth/login",
-    async (values: loginThunk, thunkAPI) => {
+    async (values: valuesTypes, thunkAPI) => {
         try {
             const data = await requests.login(values.email, values.password)
             return data; 
-        } catch (error) {
-            if (error instanceof Error) {
-                return thunkAPI.rejectWithValue(error.message);  
+        } catch (e) {
+            const error = e as Error | AxiosError;
+            if (axios.isAxiosError(error)) {
+                return thunkAPI.rejectWithValue(error.response?.data.message);  
             }
+            throw error;
         }
     }
 );
@@ -28,16 +31,33 @@ export const logout = createAsyncThunk(
     }
 );
 
+export const registerGuest = createAsyncThunk(
+    "auth/registerGuest",
+    async (values: valuesTypes, thunkAPI) => {
+        try {
+            const data = await requests.registerGuest(values);
+            return data;
+        } catch (e) {
+            const error = e as Error | AxiosError;
+            if (axios.isAxiosError(error)) {
+                return thunkAPI.rejectWithValue(error.response?.data.message);  
+            }
+            throw error;
+        }
+    }
+)
+
 interface AuthState {
     isLogged: boolean;
     user: any;
     isLoading: boolean;
     message: any;
+    isRegisterSuccessfull: boolean;
 }
 
 const initialState: AuthState = user ? 
-{ user: user, isLogged: true, isLoading: false, message: '' } 
-: { user: null, isLogged: false, isLoading: false, message: ''};
+{ user: user, isLogged: true, isLoading: false, message: '', isRegisterSuccessfull: false } 
+: { user: null, isLogged: false, isLoading: false, message: '', isRegisterSuccessfull: false };
 
 const authSlice = createSlice({
     name: 'auth',
@@ -45,7 +65,10 @@ const authSlice = createSlice({
     reducers: {
         clearMessage: (state) => {
             state.message = '';
-        }
+        },
+        clearRegister: (state) => {
+            state.isRegisterSuccessfull = false;
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(login.fulfilled, (state, action) => {
@@ -65,8 +88,15 @@ const authSlice = createSlice({
             state.user = null;
             state.isLogged = false;
         });
+        builder.addCase(registerGuest.fulfilled, (state) => {
+            state.isRegisterSuccessfull = true;
+        });
+        builder.addCase(registerGuest.rejected, (state, action) => {
+            state.isRegisterSuccessfull = false;
+            state.message = action.payload;
+        })
     },
 });
 
-export const { clearMessage } = authSlice.actions;
+export const { clearMessage, clearRegister } = authSlice.actions;
 export default authSlice.reducer;

@@ -5,18 +5,19 @@ import {
 import Page from '../../components/Page/';
 import  heroImageMainPage  from '../../images/heroImageMainPage.jpg';
 import { Search } from '@styled-icons/boxicons-regular/Search';
-import Button from '../../components/Button';
+import { Button } from '../../components/Button';
 
 const MainPage = () => {
     return(
         <Page heroImage={heroImageMainPage}>
             <Container>
                 <h2>Search for your <span>favorite</span> restaurant!</h2>
-                <SearchBar 
+                <SearchBar
+                    name='search' 
                     textAlign='center'
                     margin='0rem'
                     type="text"
-                    name='Enter your address!'
+                    placeholder='Enter your address!'
                  >
                     <Search />
                 </SearchBar>

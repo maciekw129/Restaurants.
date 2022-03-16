@@ -4,6 +4,10 @@ import MainPage from './Pages/MainPage';
 import Navbar from './components/Navbar';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import ChooseType from './Pages/Register/ChooseType';
+import RegisterGuest from './Pages/Register/RegisterGuest';
+import RegisterRestaurant from './Pages/Register/RegisterRestaurant';
+import ProtectedRoute from './utilities/ProtectedRoute';
 
 const App = () => {
   return (
@@ -15,7 +19,9 @@ const App = () => {
         <Route path='/' element={ <MainPage />} />
         <Route path='/login' element={ <Login /> } />
         <Route path='/register' element={ <Register /> }>
-          
+          <Route path='/register' element={ <ChooseType /> } />
+          <Route path=':register-guest' element={ <RegisterGuest /> } />
+          <Route path=':register-restaurant' element={ <RegisterRestaurant /> } />
         </Route>
       </Routes>
     </>

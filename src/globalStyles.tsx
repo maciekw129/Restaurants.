@@ -26,8 +26,11 @@ const GlobalStyles = createGlobalStyle`
         }
     }
 
-    p {
-        font-size: 0.9rem;
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 `;
 

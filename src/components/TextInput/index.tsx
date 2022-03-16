@@ -12,16 +12,17 @@ interface Props {
     handleChange?: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void;
     name: string;
     value?: string;
+    placeholder: string;
 }
 
-const TextInput = ({children, name, margin, textAlign, type, handleChange, value}: Props) => {
+const TextInput = ({children, name, margin, textAlign, type, handleChange, value, placeholder}: Props) => {
     return(
         <Container margin={margin}>
             <IconWrapper>
                 {children}
             </IconWrapper>
             <StyledInput
-                placeholder={name}
+                placeholder={placeholder}
                 textAlign={textAlign}
                 type={type}
                 onChange={handleChange}
