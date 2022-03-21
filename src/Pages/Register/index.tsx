@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom';
 import { Button } from '../../components/Button';
 import { useEffect } from 'react';
 import { clearRegister } from '../../store/slices/auth';
+import Loading from '../../components/Loading';
 
 const Register = () => {
     const dispatch = useAppDispatch();
-    const { isRegisterSuccessfull, message } = useAppSelector(state => state.auth);
+    const { isRegisterSuccessfull, message, isLoading } = useAppSelector(state => state.auth);
 
     useEffect(() => {
         return () => {
@@ -28,7 +29,8 @@ const Register = () => {
             </>
             : <Outlet />
             }
-            <Text color="red" bold>{message}</Text>
+            {isLoading && <Loading />}
+            {message && <Text color="red" bold>{message}</Text>}
         </Page>
     )
 };

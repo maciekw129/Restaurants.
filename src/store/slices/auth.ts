@@ -66,6 +66,9 @@ const authSlice = createSlice({
         clearMessage: (state) => {
             state.message = '';
         },
+        stopLoading: (state) => {
+            state.isLoading = false;
+        },
         clearRegister: (state) => {
             state.isRegisterSuccessfull = false;
         },
@@ -90,13 +93,19 @@ const authSlice = createSlice({
         });
         builder.addCase(register.fulfilled, (state) => {
             state.isRegisterSuccessfull = true;
+            state.isLoading = false;
+        });
+        builder.addCase(register.pending, (state) => {
+            state.isLoading = true;
+            state.message = '';
         });
         builder.addCase(register.rejected, (state, action) => {
             state.isRegisterSuccessfull = false;
+            state.isLoading = false;
             state.message = action.payload;
         })
     },
 });
 
-export const { clearMessage, clearRegister } = authSlice.actions;
+export const { clearMessage, clearRegister, stopLoading } = authSlice.actions;
 export default authSlice.reducer;

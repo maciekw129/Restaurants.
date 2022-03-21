@@ -14,9 +14,8 @@ import Radio from '../../components/Radio';
 import { Button } from '../../components/Button';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { register } from '../../store/slices/auth';
+import { register, clearMessage, stopLoading } from '../../store/slices/auth';
 import { useEffect } from 'react';
-import { clearMessage } from '../../store/slices/auth';
  
 const RegisterGuest = () => {
     const { isLoading } = useAppSelector(state => state.auth);
@@ -41,6 +40,7 @@ const RegisterGuest = () => {
     useEffect(() => {
         return () => {
             dispatch(clearMessage());
+            dispatch(stopLoading());
         }
     }, [])
     
@@ -164,7 +164,7 @@ const RegisterGuest = () => {
             >
                 <HouseDoorFill />
             </TextInput>
-            <Button type='submit'>Sign up</Button>
+            <Button type='submit' disabled={!!isLoading}>Sign up</Button>
             <Text margin='0'>Already have an account? <Link to='/login'><span>Sign in!</span></Link></Text>
         </form>
     )

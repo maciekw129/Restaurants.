@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { register } from '../../store/slices/auth';
 import { useEffect } from 'react';
-import { clearMessage } from '../../store/slices/auth';
+import { clearMessage, stopLoading } from '../../store/slices/auth';
 import Dropdown from '../../components/Inputs/Dropdown';
 import cuisines from '../../data/cuisines';
  
@@ -40,6 +40,7 @@ const RegisterRestaurant = () => {
     useEffect(() => {
         return () => {
             dispatch(clearMessage());
+            dispatch(stopLoading());
         }
     }, [])
     
@@ -147,7 +148,7 @@ const RegisterRestaurant = () => {
             >
                 <HouseDoorFill />
             </TextInput>
-            <Button type='submit'>Sign up</Button>
+            <Button type='submit' disabled={!!isLoading}>Sign up</Button>
             <Text margin='0'>Already have an account? <Link to='/login'><span>Sign in!</span></Link></Text>
         </form>
     )

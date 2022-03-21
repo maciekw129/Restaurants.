@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { login } from '../../store/slices/auth';
 import React from 'react';
 import Loading from '../../components/Loading';
-import { clearMessage } from '../../store/slices/auth';
+import { clearMessage, stopLoading } from '../../store/slices/auth';
 import { useNavigate } from 'react-router-dom';
 import Text from '../../components/Text';
 
@@ -30,6 +30,7 @@ const Login = () => {
         }
         return () => {
             dispatch(clearMessage());
+            dispatch(stopLoading());
         }
     }, [isLogged]);
 
@@ -62,7 +63,7 @@ const Login = () => {
                 >
                     <LockPassword />
                 </TextInput>
-                <Button type='submit'>Sign in</Button>
+                <Button type='submit' disabled={!!isLoading}>Sign in</Button>
                 <Text margin="0">You don't have account? <Link to='/register'><span>Sign up!</span></Link></Text>
             </form>
             {isLoading && <Loading />}
