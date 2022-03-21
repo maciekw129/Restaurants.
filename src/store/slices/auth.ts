@@ -31,11 +31,11 @@ export const logout = createAsyncThunk(
     }
 );
 
-export const registerGuest = createAsyncThunk(
+export const register = createAsyncThunk(
     "auth/registerGuest",
     async (values: valuesTypes, thunkAPI) => {
         try {
-            const data = await requests.registerGuest(values);
+            const data = values.accountType === 'restaurant' ? await requests.registerRestaurant(values) : await requests.registerGuest(values);
             return data;
         } catch (e) {
             const error = e as Error | AxiosError;
@@ -45,7 +45,7 @@ export const registerGuest = createAsyncThunk(
             throw error;
         }
     }
-)
+);
 
 interface AuthState {
     isLogged: boolean;
@@ -88,10 +88,10 @@ const authSlice = createSlice({
             state.user = null;
             state.isLogged = false;
         });
-        builder.addCase(registerGuest.fulfilled, (state) => {
+        builder.addCase(register.fulfilled, (state) => {
             state.isRegisterSuccessfull = true;
         });
-        builder.addCase(registerGuest.rejected, (state, action) => {
+        builder.addCase(register.rejected, (state, action) => {
             state.isRegisterSuccessfull = false;
             state.message = action.payload;
         })

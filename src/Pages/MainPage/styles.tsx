@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import TextInput from '../../components/TextInput';
+import TextInput from '../../components/Inputs/TextInput';
 
 export const Container = styled.div`
     display: flex;

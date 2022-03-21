@@ -1,4 +1,4 @@
-import TextInput from '../../components/TextInput';
+import TextInput from '../../components/Inputs/TextInput';
 import { Mail } from '@styled-icons/entypo/Mail';
 import { LockPassword } from '@styled-icons/remix-fill/LockPassword';
 import { Signature } from '@styled-icons/fa-solid/Signature';
@@ -14,13 +14,14 @@ import Radio from '../../components/Radio';
 import { Button } from '../../components/Button';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { registerGuest } from '../../store/slices/auth';
+import { register } from '../../store/slices/auth';
 import { useEffect } from 'react';
 import { clearMessage } from '../../store/slices/auth';
  
 const RegisterGuest = () => {
     const { isLoading } = useAppSelector(state => state.auth);
-    const { values, handleChange, resetValues } = useForm({ 
+    const { values, handleChange, resetValues } = useForm({
+        accountType: 'guest', 
         email: '',
         password: '',
         passwordConfirm: '',
@@ -45,10 +46,7 @@ const RegisterGuest = () => {
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(registerGuest(values))
-            .then(() => {
-                resetValues();
-            })
+        dispatch(register(values))
     };
     return(
         <form onSubmit={handleSubmit}>

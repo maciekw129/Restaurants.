@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Page from '../../components/Page';
 import heroImageLogin from '../../images/heroImageLogin.jpg';
-import TextInput from '../../components/TextInput';
+import TextInput from '../../components/Inputs/TextInput';
 import { Mail } from '@styled-icons/entypo/Mail';
 import { LockPassword } from '@styled-icons/remix-fill/LockPassword';
 import { Button } from '../../components/Button';

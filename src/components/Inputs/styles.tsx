@@ -13,14 +13,18 @@ Container.defaultProps = {
     margin: '1rem',
 }
 
-export const StyledInput = styled.input<{textAlign?: string}>`
+const inputStyles =`
     border: 0.5px solid hsl(0, 0%, 50%);
     border-radius: 0 50px 50px 0;
     border-left: none;
     height: 2rem;
     width: 100%;
-    text-align: ${({textAlign}) => textAlign};
     padding: 0 1rem;
+`
+
+export const StyledInput = styled.input<{textAlign?: string}>`
+    ${inputStyles};
+    text-align: ${({textAlign}) => textAlign};
 `;
 
 StyledInput.defaultProps = {
@@ -42,3 +46,7 @@ export const IconWrapper = styled.div`
         height: 1rem;
     }
 `
+
+export const List = styled.select`
+    ${inputStyles}
+`;

@@ -37,7 +37,25 @@ const requests = {
         .then(response => {
             return response
         })
-    }
+    },
+    registerRestaurant(values: valuesTypes) {
+        return axios.post(API + 'signupRestaurant', {
+            email: values.email,
+            password: values.password,
+            passwordConfirm: values.passwordConfirm,
+            restaurantName: values.restaurantName,
+            cuisine: values.cuisine,
+            city: values.city,
+            state: values.state,
+            postalCode: values.postalCode,
+            streetName: values.streetName,
+            streetNumber: values.streetNumber,
+            apartmentNumber: values.apartment,
+        })
+        .then(response => {
+            return response
+        })
+    },
 }
 
 export default requests;
