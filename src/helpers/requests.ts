@@ -16,7 +16,6 @@ const requests = {
             if(response.data.token) {
                 localStorage.setItem('user', JSON.stringify(response.data));
             }
-            return response.data;
         })
     },
     registerGuest(values: valuesTypes) {
@@ -34,9 +33,6 @@ const requests = {
             streetName: values.streetName,
             streetNumber: values.streetNumber,
         })
-        .then(response => {
-            return response
-        })
     },
     registerRestaurant(values: valuesTypes) {
         return axios.post(API + 'signupRestaurant', {
@@ -52,9 +48,9 @@ const requests = {
             streetNumber: values.streetNumber,
             apartmentNumber: values.apartment,
         })
-        .then(response => {
-            return response
-        })
+    },
+    getAllRestaurants() {
+        return axios.get(API + 'restaurants');
     },
 }
 
