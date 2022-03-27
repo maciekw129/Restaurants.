@@ -18,5 +18,11 @@ export const SearchBar = styled(TextInput)`
 `;
 
 export const RestaurantsContainer = styled.div`
-
+    margin: 4rem 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    row-gap: 4rem;
+    place-items: center;
 `;
