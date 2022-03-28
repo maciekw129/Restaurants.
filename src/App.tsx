@@ -7,7 +7,6 @@ import Register from './Pages/Register';
 import ChooseType from './Pages/Register/ChooseType';
 import RegisterGuest from './Pages/Register/RegisterGuest';
 import RegisterRestaurant from './Pages/Register/RegisterRestaurant';
-import ProtectedRoute from './utilities/ProtectedRoute';
 import RestaurantDetails from './Pages/RestaurantDetails';
 
 const App = () => {
