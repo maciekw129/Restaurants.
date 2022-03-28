@@ -10,6 +10,9 @@ import { Button } from '../../components/Button';
 import { useState, useEffect } from 'react';
 import requests from '../../helpers/requests';
 import RestaurantCard from '../../components/RestaurantCard';
+import Dropdown from '../../components/Inputs/Dropdown';
+import { City } from '@styled-icons/fa-solid/City';
+import axios from 'axios';
 
 interface Restaurant {
     [key: string]: string;
@@ -18,11 +21,19 @@ interface Restaurant {
 const MainPage = () => {
 
     const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+    const [states, setStates] = useState([]);
 
+    // DO DOKOŃCZENIA FILTROWANIE, TRZEBA W REJESTRACJI SKORZYSTAC Z KONKRETNEGO API!
     useEffect(() => {
         requests.getAllRestaurants()
         .then(response => {
             setRestaurants(response.data.data.restaurants);
+        })
+        axios.post('https://countriesnow.space/api/v0.1/countries/states', {
+            "country": "poland",
+        })
+        .then(response => {
+            setStates(response.data.data.states);
         })
     }, [])
 
@@ -39,14 +50,18 @@ const MainPage = () => {
                  >
                     <Search />
                 </SearchBar>
+                
                 <Button>Search!</Button>
             </SearchContainer>
             <RestaurantsContainer>
-                {
-                    restaurants.map((restaurant, index) => {
-                        return <RestaurantCard key={index} title={restaurant.restaurantName} cuisine={restaurant.cuisine} />
-                    })
-                }
+                {restaurants.map((restaurant, index) => 
+                    <RestaurantCard
+                        key={index} 
+                        title={restaurant.restaurantName} 
+                        cuisine={restaurant.cuisine} 
+                        id={restaurant._id} 
+                    />
+                )}
             </RestaurantsContainer>
         </Page>
     )

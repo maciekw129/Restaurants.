@@ -11,7 +11,7 @@ Text.defaultProps = {
     color: 'hsl(0, 0%, 15%)',
     bold: false,
     fontSize: '0.9rem',
-    margin: '1rem',
+    margin: '0rem',
 };
 
 export default Text;

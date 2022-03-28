@@ -12,6 +12,10 @@ export const Container = styled.header`
     align-items: center;
     background-color: #FFFFFF;
     padding: 1rem 2rem;
+
+    @media only screen and (max-width: 360px) {
+        padding: 1rem 1rem;
+    }
 `;
 
 export const IconContainer = styled.div`

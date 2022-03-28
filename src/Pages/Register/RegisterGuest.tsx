@@ -19,7 +19,7 @@ import { useEffect } from 'react';
  
 const RegisterGuest = () => {
     const { isLoading } = useAppSelector(state => state.auth);
-    const { values, handleChange, resetValues } = useForm({
+    const { values, handleChange } = useForm({
         accountType: 'guest', 
         email: '',
         password: '',

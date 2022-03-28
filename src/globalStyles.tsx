@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
 
     h1, h2, h3, h4, h5, h6, p {
         text-align: center;
-        margin: 1rem;
+        margin: 1rem 0;
 
         & span {
             color: #FC8E1B;

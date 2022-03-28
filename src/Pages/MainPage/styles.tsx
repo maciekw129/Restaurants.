@@ -25,4 +25,8 @@ export const RestaurantsContainer = styled.div`
     grid-template-rows: auto;
     row-gap: 4rem;
     place-items: center;
+
+    @media only screen and (max-width: 880px) {
+        grid-template-columns: 1fr;
+    }
 `;

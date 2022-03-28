@@ -29,6 +29,7 @@ export const Content = styled.div`
     border: 1px solid hsl(0, 0%, 75%);
     border-top: none;
     border-radius: 0 0 5px 5px;
+    padding: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -8,6 +8,7 @@ import ChooseType from './Pages/Register/ChooseType';
 import RegisterGuest from './Pages/Register/RegisterGuest';
 import RegisterRestaurant from './Pages/Register/RegisterRestaurant';
 import ProtectedRoute from './utilities/ProtectedRoute';
+import RestaurantDetails from './Pages/RestaurantDetails';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path=':register-guest' element={ <RegisterGuest /> } />
           <Route path=':register-restaurant' element={ <RegisterRestaurant /> } />
         </Route>
+        <Route path="/restaurant/:id" element={ <RestaurantDetails /> } />
       </Routes>
     </>
   );
