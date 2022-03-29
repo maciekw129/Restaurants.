@@ -13,6 +13,7 @@ import RestaurantCard from '../../components/RestaurantCard';
 import Dropdown from '../../components/Inputs/Dropdown';
 import { City } from '@styled-icons/fa-solid/City';
 import axios from 'axios';
+import keys from '../../../.keys.json';
 
 interface Restaurant {
     [key: string]: string;
@@ -29,8 +30,11 @@ const MainPage = () => {
         .then(response => {
             setRestaurants(response.data.data.restaurants);
         })
-        axios.post('https://countriesnow.space/api/v0.1/countries/states', {
-            "country": "poland",
+        axios.get('https://wft-geo-db.p.rapidapi.com/v1/geo/countries', {
+            headers: {
+                'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+                'X-RapidAPI-Key': keys.GeoDB_API,
+              }
         })
         .then(response => {
             setStates(response.data.data.states);
